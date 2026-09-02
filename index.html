@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinayak Singh — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-ink: #171717;
+    --color-paper: #ffffff;
+    --color-graphite-hairline: #e5e7eb;
+    --color-vellum: #f3f3f3;
+    --color-slate: #6f6f6f;
+    --color-pewter: #5e5e5e;
+    --color-ash: #a0a0a0;
+    --color-carbon: #222222;
+    --color-stone: #c7c7c7;
+    --color-cream-notice: #ffe9bf;
+
+    --font: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    --text-caption: 12px;
+    --text-body-sm: 14px;
+    --text-body: 16px;
+    --text-subheading: 18px;
+    --text-heading-sm: 36px;
+    --text-heading: 48px;
+    --text-heading-lg: 60px;
+    --text-display: 72px;
+
+    --radius-cards: 20px;
+    --radius-icons: 9999px;
+    --radius-buttons: 9999px;
+    --radius-list-items: 28px;
+    --radius-large-cards: 24px;
+    --radius-small-cards: 8px;
+
+    --shadow-xl-3: rgba(207, 207, 207, 0.01) 0px 132px 53px 0px, rgba(207, 207, 207, 0.05) 0px 74px 44px 0px, rgba(207, 207, 207, 0.09) 0px 33px 33px 0px, rgba(207, 207, 207, 0.1) 0px 8px 18px 0px;
+    --shadow-xl: rgba(0, 0, 0, 0.01) 0px 128px 51px 0px, rgba(0, 0, 0, 0.02) 0px 72px 43px 0px, rgba(0, 0, 0, 0.03) 0px 32px 32px 0px, rgba(0, 0, 0, 0.04) 0px 8px 18px 0px;
+
+    --section-gap: 80px;
+    --page-max-width: 1200px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: var(--page-max-width);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Announcement bar */
+  .announce {
+    background: var(--color-cream-notice);
+    padding: 8px 0;
+  }
+  .announce .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .announce span { font-size: 13px; color: var(--color-ink); }
+  .pill {
+    display: inline-block;
+    background: var(--color-ink);
+    color: #fff;
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: var(--radius-buttons);
+    border: none;
+    cursor: pointer;
+    font-family: var(--font);
+    white-space: nowrap;
+  }
+  .pill.small { padding: 6px 14px; font-size: 12px; }
+
+  /* Nav */
+  nav {
+    background: var(--color-paper);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid transparent;
+  }
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .wordmark { font-size: 20px; color: var(--color-ink); }
+  .navlinks { display: flex; gap: 24px; }
+  .navlinks a { font-size: 14px; color: var(--color-ink); }
+  .navlinks a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .navright { display: flex; align-items: center; gap: 20px; }
+  .ghostlink { font-size: 14px; text-underline-offset: 3px; text-decoration: underline; }
+
+  /* Hero */
+  .hero {
+    padding: 96px 0 64px;
+    text-align: center;
+    position: relative;
+  }
+  .blob {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 620px;
+    height: 620px;
+    z-index: 0;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .eyebrow-free { max-width: 780px; margin: 0 auto; }
+  h1.display {
+    font-size: var(--text-display);
+    line-height: 1.0;
+    font-weight: 400;
+    margin: 0 auto;
+    max-width: 820px;
+    letter-spacing: -0.01em;
+  }
+  .hero p.sub {
+    font-size: var(--text-subheading);
+    color: var(--color-slate);
+    margin-top: 24px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  .btn-outline {
+    padding: 8px 16px;
+    border-radius: var(--radius-buttons);
+    border: 1px solid var(--color-graphite-hairline);
+    font-size: 14px;
+    color: var(--color-ink);
+  }
+
+  /* Preview card */
+  .preview-card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-graphite-hairline);
+    border-radius: var(--radius-cards);
+    box-shadow: var(--shadow-xl-3);
+    max-width: 920px;
+    margin: 64px auto 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+  }
+  .preview-chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--color-graphite-hairline);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-stone); }
+  .preview-body {
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 32px;
+  }
+  .preview-body h3 { font-size: 18px; font-weight: 400; margin: 0 0 8px; }
+  .preview-body p { font-size: 14px; color: var(--color-slate); margin: 0 0 16px; line-height: 1.5; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-size: 12px;
+    color: var(--color-pewter);
+    background: var(--color-vellum);
+    padding: 5px 10px;
+    border-radius: var(--radius-icons);
+  }
+  .stat-block { border-left: 1px solid var(--color-graphite-hairline); padding-left: 32px; }
+  .stat { margin-bottom: 20px; }
+  .stat:last-child { margin-bottom: 0; }
+  .stat .label { font-size: 12px; color: var(--color-slate); display: block; margin-bottom: 4px; }
+  .stat .value { font-size: 28px; color: var(--color-ink); }
+
+  /* Section divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: var(--section-gap) 0 48px;
+  }
+  .divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--color-graphite-hairline);
+  }
+  .divider span { font-size: 14px; color: var(--color-slate); white-space: nowrap; }
+
+  section { padding-top: 0; }
+  section:first-of-type .divider { margin-top: 64px; }
+
+  h2.section-title {
+    font-size: var(--text-heading-sm);
+    font-weight: 400;
+    margin: 0 0 40px;
+    line-height: 1.25;
+    max-width: 640px;
+  }
+
+  /* Skills grid - 4 columns feature card */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .skill-card {
+    background: var(--color-vellum);
+    border-radius: var(--radius-cards);
+    padding: 24px;
+  }
+  .skill-card h4 { font-size: 15px; margin: 0 0 12px; font-weight: 400; }
+  .skill-card ul { list-style: none; margin: 0; padding: 0; }
+  .skill-card li {
+    font-size: 13px;
+    color: var(--color-slate);
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+
+  /* Projects */
+  .project-card {
+    border: 1px solid var(--color-graphite-hairline);
+    border-radius: var(--radius-large-cards);
+    padding: 32px;
+    margin-bottom: 16px;
+  }
+  .project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .project-head h3 { font-size: var(--text-subheading); font-weight: 400; margin: 0; }
+  .project-head .dates { font-size: 13px; color: var(--color-ash); white-space: nowrap; }
+  .project-card ul { margin: 0 0 16px; padding-left: 18px; }
+  .project-card li { font-size: 14px; color: var(--color-pewter); margin-bottom: 8px; line-height: 1.5; }
+  .status-badge {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--color-pewter);
+    background: var(--color-vellum);
+    padding: 3px 10px;
+    border-radius: var(--radius-icons);
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+
+  /* Training card */
+  .training-card {
+    border: 1px solid var(--color-graphite-hairline);
+    border-radius: var(--radius-large-cards);
+    padding: 32px;
+  }
+  .training-card .meta { font-size: 13px; color: var(--color-ash); margin-bottom: 4px; }
+  .training-card h3 { font-size: var(--text-subheading); font-weight: 400; margin: 4px 0 2px; }
+  .training-card .role { font-size: 14px; color: var(--color-slate); margin: 0 0 16px; font-style: italic; }
+  .training-card ul { margin: 0; padding-left: 18px; }
+  .training-card li { font-size: 14px; color: var(--color-pewter); margin-bottom: 8px; line-height: 1.5; }
+
+  /* Two column: certs + achievements */
+  .split-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .list-panel {
+    background: var(--color-vellum);
+    border-radius: var(--radius-cards);
+    padding: 32px;
+  }
+  .list-panel h4 { font-size: 15px; font-weight: 400; margin: 0 0 20px; }
+  .cert-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 12px 0;
+    border-top: 1px solid var(--color-graphite-hairline);
+    font-size: 13px;
+  }
+  .cert-row:first-of-type { border-top: none; padding-top: 0; }
+  .cert-row .name { color: var(--color-ink); }
+  .cert-row .date { color: var(--color-ash); white-space: nowrap; }
+  .achieve-row {
+    padding: 12px 0;
+    border-top: 1px solid var(--color-graphite-hairline);
+    font-size: 13px;
+    color: var(--color-pewter);
+    line-height: 1.5;
+  }
+  .achieve-row:first-of-type { border-top: none; padding-top: 0; }
+  .achieve-row b { color: var(--color-ink); font-weight: 400; }
+
+  /* Education */
+  .edu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 24px 0;
+    border-top: 1px solid var(--color-graphite-hairline);
+    flex-wrap: wrap;
+  }
+  .edu-row:first-of-type { border-top: none; }
+  .edu-left h3 { font-size: 16px; font-weight: 400; margin: 0 0 4px; }
+  .edu-left p { font-size: 13px; color: var(--color-slate); margin: 0; }
+  .edu-right { text-align: right; font-size: 13px; color: var(--color-ash); }
+  .edu-right .cgpa { color: var(--color-ink); display: block; margin-top: 4px; }
+
+  /* Footer / contact */
+  footer {
+    margin-top: var(--section-gap);
+    border-top: 1px solid var(--color-graphite-hairline);
+    padding: 56px 0 40px;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  footer h2 {
+    font-size: 36px;
+    font-weight: 400;
+    margin: 0 0 16px;
+    max-width: 420px;
+    line-height: 1.25;
+  }
+  .footer-links { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .footer-links a { font-size: 14px; text-underline-offset: 3px; text-decoration: underline; }
+  .footer-bottom {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-graphite-hairline);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--color-ash);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 860px) {
+    h1.display { font-size: 44px; }
+    .preview-body { grid-template-columns: 1fr; }
+    .stat-block { border-left: none; padding-left: 0; border-top: 1px solid var(--color-graphite-hairline); padding-top: 20px; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .split-two { grid-template-columns: 1fr; }
+    .navlinks { display: none; }
+    .edu-right { text-align: left; }
+    .edu-row { flex-direction: column; }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="announce">
+    <div class="wrap">
+      <span>Open to internships and full-stack engineering roles</span>
+      <a href="#contact" class="pill small">Get in touch</a>
+    </div>
+  </div>
+
+  <nav>
+    <div class="wrap">
+      <a href="#top" class="wordmark">vinayak singh</a>
+      <div class="navlinks">
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#training">Training</a>
+        <a href="#education">Education</a>
+      </div>
+      <div class="navright">
+        <a href="https://github.com/CodeSlayer07" class="ghostlink" target="_blank" rel="noopener">GitHub</a>
+        <a href="#contact" class="pill">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="top"></div>
+  <header class="hero">
+    <svg class="blob" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#c7c7c7"/>
+          <stop offset="100%" stop-color="#8f8f8f"/>
+        </linearGradient>
+      </defs>
+      <path d="M300,80 C420,80 520,170 520,290 C520,410 430,510 300,510 C170,510 80,420 90,290 C100,160 180,80 300,80 Z" fill="url(#g1)" opacity="0.35"/>
+      <path d="M300,140 C400,140 470,210 470,300 C470,390 400,450 300,450 C200,450 130,390 135,300 C140,210 200,140 300,140 Z" fill="url(#g1)" opacity="0.3" transform="rotate(20 300 300)"/>
+    </svg>
+    <div class="wrap hero-inner">
+      <h1 class="display">Full-stack systems, built with care and shipped end to end.</h1>
+      <p class="sub">I'm a Computer Science student building event platforms, health tools, and transcription software — from database schema to the interface people actually touch.</p>
+      <div class="hero-actions">
+        <a href="#work" class="pill">View my work</a>
+        <a href="mailto:vs9528633@gmail.com" class="btn-outline">vs9528633@gmail.com</a>
+      </div>
+
+      <div class="preview-card">
+        <div class="preview-chrome">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+        <div class="preview-body">
+          <div>
+            <h3>Event Management System</h3>
+            <p>A full-stack platform for organizers to publish and run 15+ concurrent events, with QR-code check-in and role-based dashboards for organizers and attendees.</p>
+            <div class="tag-row">
+              <span class="tag">MongoDB</span>
+              <span class="tag">Express.js</span>
+              <span class="tag">React.js</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Tailwind CSS</span>
+            </div>
+          </div>
+          <div class="stat-block">
+            <div class="stat">
+              <span class="label">Concurrent events supported</span>
+              <span class="value">15+</span>
+            </div>
+            <div class="stat">
+              <span class="label">Attendee sign-ups per event</span>
+              <span class="value">100+</span>
+            </div>
+            <div class="stat">
+              <span class="label">User roles</span>
+              <span class="value">2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section id="work">
+      <div class="divider"><span>Selected work</span></div>
+      <h2 class="section-title">Three products, from idea to working software.</h2>
+
+      <div class="project-card">
+        <div class="project-head">
+          <h3>Event Management System</h3>
+          <span class="dates">Feb 2026 – Mar 2026</span>
+        </div>
+        <ul>
+          <li>Architected a full-stack event platform enabling organizers to create, publish, and manage 15+ concurrent events with real-time attendee tracking.</li>
+          <li>Engineered an online registration and ticketing workflow handling 100+ sign-ups per event, including QR-code based check-in.</li>
+          <li>Implemented role-based access control across organizer and attendee roles, securing event data and administrative controls.</li>
+          <li>Built dual dashboards centralizing event schedules, notifications, and RSVP management in one platform.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">MongoDB</span><span class="tag">Express.js</span><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Tailwind CSS</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-head">
+          <h3>Health Awareness System</h3>
+          <span class="dates">Dec 2025 – Jan 2026</span>
+        </div>
+        <ul>
+          <li>Built a full-stack health awareness platform delivering curated articles, wellness tips, and self-assessment tools to 100+ users.</li>
+          <li>Integrated secure authentication with session management for personalized health tracking and recommendations.</li>
+          <li>Created 15+ REST APIs across users, health resources, and assessments with Node.js and Express.js.</li>
+          <li>Designed an interactive symptom-checker and BMI/health-metric calculator to improve engagement.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">MongoDB</span><span class="tag">Express.js</span><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Tailwind CSS</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-head">
+          <h3>Transcripter<span class="status-badge">In progress</span></h3>
+          <span class="dates">Aug 2026 – Present</span>
+        </div>
+        <ul>
+          <li>Developing a real-time audio and video transcription tool that converts spoken content into accurate, timestamped text.</li>
+          <li>Integrating speech-to-text processing to support multiple file formats and streaming input sources.</li>
+          <li>Designing an intuitive interface for uploading media, editing transcripts, and exporting results in multiple formats.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">JavaScript</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="divider"><span>Skills</span></div>
+      <h2 class="section-title">Comfortable across the stack, from the database up.</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4>Languages</h4>
+          <ul>
+            <li>Java</li><li>JavaScript</li><li>C</li><li>C++</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h4>Technologies</h4>
+          <ul>
+            <li>HTML &amp; CSS</li><li>Bootstrap</li><li>React</li><li>Node.js</li><li>Express.js</li><li>Tailwind CSS</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h4>Databases &amp; Tools</h4>
+          <ul>
+            <li>MySQL</li><li>MongoDB</li><li>Git &amp; GitHub</li><li>Figma</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h4>Working style</h4>
+          <ul>
+            <li>Problem solving</li><li>Team collaboration</li><li>Time management</li><li>Adaptability</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="training">
+      <div class="divider"><span>Training</span></div>
+      <h2 class="section-title">A summer spent learning how design thinking shapes software.</h2>
+      <div class="training-card">
+        <div class="meta">Lovely Professional University · Jun 2025 – Jul 2025</div>
+        <h3>Think Design Prototype — Summer Training on Design Thinking &amp; Figma</h3>
+        <p class="role">Design Thinking Trainee and UX Prototype Designer</p>
+        <ul>
+          <li>Learned design thinking methodologies to analyze real user problems and shape user-centered solutions.</li>
+          <li>Completed an end-to-end design project covering empathize, define, ideate, prototype, and test phases independently.</li>
+          <li>Conducted user research and translated the findings into clear, actionable design requirements.</li>
+          <li>Designed a 20+ screen high-fidelity interactive prototype in Figma for usability testing.</li>
+        </ul>
+      </div>
+
+      <div class="split-two" style="margin-top: 16px;">
+        <div class="list-panel">
+          <h4>Certificates</h4>
+          <div class="cert-row"><span class="name">Introduction to Cybersecurity — Infosys Springboard</span><span class="date">Nov 2025</span></div>
+          <div class="cert-row"><span class="name">Introduction to Python Programming — Infosys Springboard</span><span class="date">Aug 2026</span></div>
+          <div class="cert-row"><span class="name">Introduction to Artificial Intelligence — Infosys Springboard</span><span class="date">May 2026</span></div>
+        </div>
+        <div class="list-panel">
+          <h4>Achievements</h4>
+          <div class="achieve-row">Solved <b>200+</b> programming problems across online coding platforms through regular practice.</div>
+          <div class="achieve-row">Earned the <b>LeetCode 100 Days</b> badge for consistent daily problem-solving.</div>
+          <div class="achieve-row">Ranked <b>Top 10 of 50+ teams</b> in a college hackathon with an original web solution prototype.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="divider"><span>Education</span></div>
+      <h2 class="section-title">Currently reading Computer Science and Engineering.</h2>
+      <div>
+        <div class="edu-row">
+          <div class="edu-left">
+            <h3>Lovely Professional University</h3>
+            <p>Bachelor of Technology — Computer Science and Engineering</p>
+          </div>
+          <div class="edu-right">
+            Phagwara, Punjab<br>Aug 2026 – Present
+            <span class="cgpa">CGPA: 7.3</span>
+          </div>
+        </div>
+        <div class="edu-row">
+          <div class="edu-left">
+            <h3>Gyandeep School</h3>
+            <p>Higher Secondary Education</p>
+          </div>
+          <div class="edu-right">
+            Mathura, Uttar Pradesh<br>2024 – 2025
+            <span class="cgpa">75.7%</span>
+          </div>
+        </div>
+        <div class="edu-row">
+          <div class="edu-left">
+            <h3>Mount Litera Zee School</h3>
+            <p>Secondary Education</p>
+          </div>
+          <div class="edu-right">
+            Mathura, Uttar Pradesh<br>2022 – 2023
+            <span class="cgpa">88.0%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contact">
+    <div class="wrap">
+      <div class="footer-inner">
+        <h2>Have a project or a role in mind? I'd like to hear about it.</h2>
+        <div class="footer-links">
+          <a href="mailto:vs9528633@gmail.com">vs9528633@gmail.com</a>
+          <a href="https://github.com/CodeSlayer07" target="_blank" rel="noopener">github.com/CodeSlayer07</a>
+          <a href="tel:+916398627714">+91 6398627714</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Vinayak Singh</span>
+        <span>Phagwara, Punjab</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
